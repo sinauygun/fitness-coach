@@ -1,4 +1,4 @@
-import { Plan, PlanItem } from "./types";
+import type { Plan, PlanItem } from "./types";
 import YAML from "yaml";
 
 export function todayPattern(plan:Plan, d=new Date()) {

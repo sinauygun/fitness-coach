@@ -1,4 +1,4 @@
-import { Plan } from "./types";
+import type { Plan } from "./types";
 const plan: Plan = {
   timezone: "Europe/Istanbul",
   weeklyPattern: ["A","B","C","B","A","C","REST"],

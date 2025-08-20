@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import defaultPlan from "../defaultPlan";
-import { Plan } from "../types";
+import type { Plan } from "../types";
 import { Link } from "react-router-dom";
 
 export default function CalendarView(){

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import defaultPlan from "./defaultPlan";
-import { Plan, DayDef } from "./types";
+import type { Plan, DayDef } from "./types";
 import { todayPattern, scheduleTodayNotifications, toYAML, fromYAML, makeICS } from "./utils";
 import { parseAppleExportXML, parseCSV } from "./health";
-import { Download, Upload, Calendar, Bell, FileDown, FileUp, Apple, Edit3, Check } from "lucide-react";
+import { Calendar, Bell, FileDown, FileUp, Apple, Edit3, Check } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function App(){
