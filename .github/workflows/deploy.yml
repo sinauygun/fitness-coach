@@ -7,16 +7,21 @@ permissions:
   contents: read
   pages: write
   id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20 }
+        with:
+          node-version: 20
       - run: npm ci || npm i
-      - run: VITE_BASE=/fitness-coach/ npm run build
-      - run: cp dist/index.html dist/404.html
+      - run: echo "VITE_BASE=/fitness-coach/" >> $GITHUB_ENV
+      - run: npm run build
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
