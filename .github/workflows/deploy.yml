@@ -10,6 +10,7 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,10 +22,26 @@ jobs:
       - run: npm ci || npm i
       - run: echo "VITE_BASE=/fitness-coach/" >> $GITHUB_ENV
       - run: npm run build
+
+      # 1) Enable Pages (first run) → build_type: workflow
+      - name: Enable GitHub Pages (first-time)
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages \
+            -d '{"build_type":"workflow"}' || true
+
+      # 2) Configure Pages (also sets env + URL)
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # 3) Upload artifact
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
