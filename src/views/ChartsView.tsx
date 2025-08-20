@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import Layout from "../components/Layout";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { parseAppleExportXML, parseCSV } from "../health";
 
@@ -16,8 +17,8 @@ export default function ChartsView(){
   })),[last90]);
 
   return (
-    <div className="min-h-screen p-4">
-      <header className="mb-4 flex items-center justify-between">
+    <div className="">
+      <Layout><div className="mb-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-sky-400">📈 90 Günlük Grafikler</h1>
         <nav className="flex gap-2">
           <Link className="btn-secondary" to="/">Bugün</Link>
@@ -51,7 +52,6 @@ export default function ChartsView(){
             <Line type="monotone" dataKey="ex" dot={false} />
           </LineChart>
         </ResponsiveContainer>
-      </div>
-    </div>
+      </div></Layout>
   );
 }

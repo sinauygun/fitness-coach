@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import defaultPlan from "../defaultPlan";
 import type { Plan } from "../types";
 import { Link } from "react-router-dom";
+import Layout from "../components/Layout";
 import { toYAML, fromYAML } from "../utils";
 
 export default function EditorView(){
@@ -24,8 +25,8 @@ export default function EditorView(){
   }
 
   return (
-    <div className="min-h-screen p-4">
-      <header className="mb-4 flex items-center justify-between">
+    <div className="">
+      <Layout><div className="mb-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-sky-400">🛠️ Gün/Gün Editör (YAML)</h1>
         <nav className="flex gap-2">
           <Link className="btn-secondary" to="/">Bugün</Link>
@@ -41,7 +42,6 @@ export default function EditorView(){
           <button className="btn" onClick={save}>Kaydet</button>
           <button className="btn-secondary" onClick={()=>setText(toYAML(defaultPlan))}>Varsayılan</button>
         </div>
-      </div>
-    </div>
+      </div></Layout>
   );
 }

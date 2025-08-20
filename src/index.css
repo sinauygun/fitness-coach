@@ -1,10 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root { color-scheme: light dark; }
-html,body,#root { height:100%; }
-body { @apply bg-slate-950 text-slate-100; }
-.card { @apply bg-slate-900/70 border border-slate-700 rounded-2xl p-4 shadow-xl; }
-.btn { @apply px-3 py-2 rounded-xl font-semibold bg-emerald-500 text-slate-900 hover:bg-emerald-400; }
-.btn-secondary { @apply px-3 py-2 rounded-xl font-semibold bg-slate-700 hover:bg-slate-600; }
-.pill { @apply text-xs border border-sky-500 text-sky-300 rounded-full px-2 py-0.5; }
+
+:root { color-scheme: dark; }
+html,body,#root { height: 100%; }
+body { @apply bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 text-slate-100 font-[Inter],ui-sans-serif,system-ui; }
+
+.container-app { @apply max-w-6xl mx-auto px-4 md:px-6; }
+.header {
+  @apply bg-gradient-to-r from-sky-600/20 via-emerald-600/20 to-purple-600/20
+         border-b border-slate-800/60 backdrop-blur-xl sticky top-0 z-40;
+}
+.header-inner { @apply container-app py-4 flex items-center justify-between; }
+.brand { @apply text-xl md:text-2xl font-extrabold text-sky-400 tracking-tight; }
+.nav a { @apply text-slate-300 hover:text-white px-3 py-1 rounded-lg hover:bg-white/5; }
+
+.grid-2 { @apply grid gap-4 md:grid-cols-2; }
+.card { @apply bg-slate-900/70 border border-slate-800 rounded-2xl p-4 shadow-2xl shadow-black/40; }
+.card h2 { @apply text-lg md:text-xl font-bold text-sky-300; }
+.pill { @apply text-xs md:text-[11px] border border-sky-500/50 text-sky-300 rounded-full px-2 py-0.5; }
+.btn { @apply inline-flex items-center gap-1 px-3 py-2 rounded-xl font-semibold bg-emerald-500 text-slate-900 hover:bg-emerald-400 active:scale-[.98] transition; }
+.btn-secondary { @apply inline-flex items-center gap-1 px-3 py-2 rounded-xl font-semibold bg-slate-800 hover:bg-slate-700; }
+.table { @apply w-full text-sm; }
+.table th { @apply text-left text-sky-400 pb-1; }
+.table tr { @apply border-b border-slate-800; }
+.input { @apply w-full bg-slate-900 border border-slate-700 rounded-xl p-2 text-sm outline-none focus:border-sky-500; }
+.subtle { @apply text-xs text-slate-400; }

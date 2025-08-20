@@ -98,7 +98,7 @@ export default function App(){
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
+    <Layout>
       <header className="mb-6">
         <h1 className="text-3xl font-extrabold text-sky-400">🏋️ Fitness Coach</h1>
         <p className="text-slate-300">PWA — iPhone’da <b>Paylaş → Ana Ekrana Ekle</b></p>
@@ -109,7 +109,7 @@ export default function App(){
         </nav>
       </header>
 
-      <section className="grid md:grid-cols-2 gap-4">
+      <section className="grid-2">
         <div className="card">
           <div className="flex items-center justify-between">
             <div>
@@ -124,7 +124,7 @@ export default function App(){
 
           <div className="mt-4">
             <h3 className="font-semibold text-sky-300 mb-2">Öğünler</h3>
-            <table className="w-full">
+            <table className="table">
               <thead><tr className="text-sky-400"><th className="text-left">Saat</th><th className="text-left">İçerik</th></tr></thead>
               <tbody>
                 {(def.meals||[]).map((m,i)=>(
@@ -137,7 +137,7 @@ export default function App(){
             </table>
 
             <h3 className="font-semibold text-sky-300 mt-4 mb-2">Spor</h3>
-            <table className="w-full">
+            <table className="table">
               <thead><tr className="text-sky-400"><th className="text-left">Saat</th><th className="text-left">Program</th></tr></thead>
               <tbody>
                 {(def.workouts||[]).map((w,i)=>(
@@ -204,6 +204,6 @@ export default function App(){
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 }
